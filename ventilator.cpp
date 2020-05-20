@@ -61,6 +61,7 @@ void Ventilator::home()
 {
     m_params_changed = true;
     set_vstate(VS_Home);
+    digitalWrite(m_enable_pin, STEPPER_ASSERT_STATE);
 }
 
 void Ventilator::if_params_changed_update_vars()
