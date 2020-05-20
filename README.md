@@ -15,7 +15,12 @@ Provides the low-level driving of a piston or bellows ventilator using a stepper
 -    R -> Send a text in json form reporting the current state and parameters
 -    h -> set homing speed in steps/sec
 
-All commands consist of a single char possibly followed by a parameter with no intervening whitespace, terminated by TERM, an enumeration constant in the class implementing the command interpreter (simple switch statement on first char followed by the appropriate sscanf() call).
+All commands consist of a single char possibly followed by a parameter with no intervening whitespace, terminated by "\r" by default.
+
+(TERM is an enumeration constant in the class implementing the command interpreter, which is a simple switch statement on first char followed by the appropriate sscanf() call).
 
 The home sensor is monitored by an edge-sensitive interrupt, which just sets a volatile that is checked in the ventilator 
 state machine.
+
+## Notes
+stm32 output pins swing from 0 to 3.3v, and the typical TB6600-based stepper driver for driving the larger NEMA23 steppers uses opto couplers with 560 ohm resistors, you will need to level shift the step, direction and enable pins with a transistor, either NPN or N-channel FET that pulls the cathode of the opto coupler's LED to ground, and tie the anode input pin, which passes through that 560 ohm stepper, to the 5V rail so you generate sufficient current to turn on the LED in the opto coupler.  Or, alternatively, replace the 560 ohm resistor on the stepper driver board with something closer to 300 ohms and tie it to the 3v3 rail.
