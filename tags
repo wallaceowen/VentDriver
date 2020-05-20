@@ -1,0 +1,136 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AD_BITS	constants.h	26;"	d
+AD_MAX	constants.h	27;"	d
+CMD_BUFFER_SIZE	commander.h	6;"	d
+CS_Command	commander.h	/^    enum CmdState { CS_Init, CS_Reading, CS_Command, CS_SendReply };$/;"	e	enum:Commander::CmdState
+CS_Init	commander.h	/^    enum CmdState { CS_Init, CS_Reading, CS_Command, CS_SendReply };$/;"	e	enum:Commander::CmdState
+CS_Reading	commander.h	/^    enum CmdState { CS_Init, CS_Reading, CS_Command, CS_SendReply };$/;"	e	enum:Commander::CmdState
+CS_SendReply	commander.h	/^    enum CmdState { CS_Init, CS_Reading, CS_Command, CS_SendReply };$/;"	e	enum:Commander::CmdState
+C_Init	commander.h	/^    enum Commands { C_Init, C_SetBPM, C_SetPercent };$/;"	e	enum:Commander::Commands
+C_SetBPM	commander.h	/^    enum Commands { C_Init, C_SetBPM, C_SetPercent };$/;"	e	enum:Commander::Commands
+C_SetPercent	commander.h	/^    enum Commands { C_Init, C_SetBPM, C_SetPercent };$/;"	e	enum:Commander::Commands
+CmdState	commander.h	/^    enum CmdState { CS_Init, CS_Reading, CS_Command, CS_SendReply };$/;"	g	class:Commander
+Commander	commander.cpp	/^Commander::Commander(Ventilator *ventilator)$/;"	f	class:Commander
+Commander	commander.h	/^class Commander$/;"	c
+Commands	commander.h	/^    enum Commands { C_Init, C_SetBPM, C_SetPercent };$/;"	g	class:Commander
+Constants	commander.h	/^    enum Constants { TERM='\\r' };$/;"	g	class:Commander
+DEFAULT_PISTON_LEN_MM	constants.h	30;"	d
+DEFAULT_STEPPER_MAX_ACCEL	constants.h	32;"	d
+DEFAULT_STEPPER_MAX_SPEED	constants.h	33;"	d
+DEFAULT_STEPS_PER_MM	constants.h	29;"	d
+DIS_STATE	constants.h	18;"	d
+Dir	constants.h	/^enum Dir {Forward = LOW, Reverse = HIGH };$/;"	g
+DriveSystem	drive_system.h	/^struct DriveSystem$/;"	s
+ENA_STATE	constants.h	17;"	d
+Forward	constants.h	/^enum Dir {Forward = LOW, Reverse = HIGH };$/;"	e	enum:Dir
+HALF_VOLUME	constants.h	23;"	d
+HOME_PIN	ports.h	12;"	d
+HOME_PIN	ports.h	18;"	d
+HOME_STEPPER_SPEED	constants.h	34;"	d
+HOMING_SPEED	constants.h	36;"	d
+INTERVAL_MSEC	ventilator.cpp	17;"	d	file:
+MAX_BPM	constants.h	10;"	d
+MAX_BPM_MSEC	constants.h	45;"	d
+MAX_VOLUME	constants.h	22;"	d
+MAX_VOLUME_THRESHOLD	constants.h	24;"	d
+MILLISECONDS	constants.h	13;"	d
+MIN_BPM	constants.h	9;"	d
+MIN_BPM_MSEC	constants.h	44;"	d
+MIN_VOLUME	constants.h	21;"	d
+MSEC_PER_SEC	constants.h	39;"	d
+POS_REP	ports.h	13;"	d
+PWM_REPS	ventilator.cpp	16;"	d	file:
+Reverse	constants.h	/^enum Dir {Forward = LOW, Reverse = HIGH };$/;"	e	enum:Dir
+SECS_IN_MIN	constants.h	38;"	d
+STEPPER_ASSERT_STATE	constants.h	41;"	d
+STEPPER_DEASSERT_STATE	constants.h	42;"	d
+STEPPER_DIR	ports.h	11;"	d
+STEPPER_DIR	ports.h	16;"	d
+STEPPER_ENABLE	ports.h	17;"	d
+STEPPER_ENABLE	ports.h	9;"	d
+STEPPER_STEP	ports.h	10;"	d
+STEPPER_STEP	ports.h	15;"	d
+TERM	commander.h	/^    enum Constants { TERM='\\r' };$/;"	e	enum:Commander::Constants
+USING_STM32	ports.h	6;"	d
+VS_Disable	vstate.h	/^enum VentilatorState { VS_Disable, VS_Disabled,$/;"	e	enum:VentilatorState
+VS_Disabled	vstate.h	/^enum VentilatorState { VS_Disable, VS_Disabled,$/;"	e	enum:VentilatorState
+VS_Exhale	vstate.h	/^    VS_Exhale, VS_ExhaleDelay,$/;"	e	enum:VentilatorState
+VS_ExhaleDelay	vstate.h	/^    VS_Exhale, VS_ExhaleDelay,$/;"	e	enum:VentilatorState
+VS_Full	vstate.h	/^    VS_Full,$/;"	e	enum:VentilatorState
+VS_Home	vstate.h	/^    VS_Home, VS_Homing, VS_Homed };$/;"	e	enum:VentilatorState
+VS_Homed	vstate.h	/^    VS_Home, VS_Homing, VS_Homed };$/;"	e	enum:VentilatorState
+VS_Homing	vstate.h	/^    VS_Home, VS_Homing, VS_Homed };$/;"	e	enum:VentilatorState
+VS_Inhale	vstate.h	/^    VS_Inhale, VS_InhaleDelay,$/;"	e	enum:VentilatorState
+VS_InhaleDelay	vstate.h	/^    VS_Inhale, VS_InhaleDelay,$/;"	e	enum:VentilatorState
+Ventilator	ventilator.cpp	/^Ventilator::Ventilator() :$/;"	f	class:Ventilator
+Ventilator	ventilator.h	/^class Ventilator$/;"	c
+VentilatorState	vstate.h	/^enum VentilatorState { VS_Disable, VS_Disabled,$/;"	g
+__commander_h	commander.h	2;"	d
+__constants_h	constants.h	4;"	d
+__drive_system_h	drive_system.h	4;"	d
+__ports_h	ports.h	4;"	d
+__types_h	types.h	4;"	d
+__ventilator_control_h	ventilator.h	4;"	d
+__vnew_h	vnew.h	4;"	d
+__vstate_h	vstate.h	4;"	d
+adjust_speed	ventilator.cpp	/^void Ventilator::adjust_speed(float speed)$/;"	f	class:Ventilator
+analog_t	types.h	/^typedef int16_t analog_t;$/;"	t
+dbg_msg	commander.cpp	/^char dbg_msg[80];$/;"	v
+disable	ventilator.cpp	/^void Ventilator::disable()$/;"	f	class:Ventilator
+duration	ventilator.cpp	/^int Ventilator::duration()$/;"	f	class:Ventilator
+enable	ventilator.cpp	/^void Ventilator::enable()$/;"	f	class:Ventilator
+exhale_delay	ventilator.h	/^    inline uint32_t exhale_delay() const { return m_exhale_duration; }$/;"	f	class:Ventilator
+home_reached	ventilator.cpp	/^static volatile bool home_reached = false;$/;"	v	file:
+home_triggered	ventilator.cpp	/^void Ventilator::home_triggered()$/;"	f	class:Ventilator
+if_params_changed_update_vars	ventilator.cpp	/^void Ventilator::if_params_changed_update_vars()$/;"	f	class:Ventilator
+inhale_delay	ventilator.h	/^    inline uint32_t inhale_delay() const { return m_inhale_duration; }$/;"	f	class:Ventilator
+loop	commander.cpp	/^void Commander::loop()$/;"	f	class:Commander
+loop	ventilator.cpp	/^void Ventilator::loop()$/;"	f	class:Ventilator
+loop_var_speed	ventilator.cpp	/^void Ventilator::loop_var_speed()$/;"	f	class:Ventilator
+m_bpm	ventilator.h	/^    int8_t          m_bpm;$/;"	m	class:Ventilator
+m_cmd	commander.h	/^    char m_cmd[CMD_BUFFER_SIZE];$/;"	m	class:Commander
+m_distance_steps	ventilator.h	/^    move_t  m_distance_steps;$/;"	m	class:Ventilator
+m_drive_system	ventilator.h	/^    DriveSystem     m_drive_system;$/;"	m	class:Ventilator
+m_enable_pin	ventilator.h	/^    int             m_enable_pin;$/;"	m	class:Ventilator
+m_enabled	ventilator.h	/^    bool            m_enabled;$/;"	m	class:Ventilator
+m_exhale_duration	ventilator.h	/^    int32_t m_exhale_duration;$/;"	m	class:Ventilator
+m_exhale_speed	ventilator.h	/^    speed_t m_exhale_speed;$/;"	m	class:Ventilator
+m_inhale_duration	ventilator.h	/^    int32_t m_inhale_duration;$/;"	m	class:Ventilator
+m_inhale_speed	ventilator.h	/^    speed_t m_inhale_speed;$/;"	m	class:Ventilator
+m_length_mm	ventilator.h	/^    move_t          m_length_mm;$/;"	m	class:Ventilator
+m_offset	commander.h	/^    unsigned m_offset;$/;"	m	class:Commander
+m_params_changed	ventilator.h	/^    bool            m_params_changed;$/;"	m	class:Ventilator
+m_percent	ventilator.h	/^    int8_t          m_percent;$/;"	m	class:Ventilator
+m_reply	commander.h	/^    char m_reply[CMD_BUFFER_SIZE];$/;"	m	class:Commander
+m_state	commander.h	/^    CmdState m_state;$/;"	m	class:Commander
+m_state	ventilator.h	/^    VentilatorState m_state;$/;"	m	class:Ventilator
+m_stepper	ventilator.h	/^    AccelStepper   *m_stepper;$/;"	m	class:Ventilator
+m_stepper_moving	ventilator.h	/^    bool m_stepper_moving;$/;"	m	class:Ventilator
+m_steps_per_mm	ventilator.h	/^    move_t          m_steps_per_mm;$/;"	m	class:Ventilator
+m_ventilator	commander.h	/^    Ventilator *m_ventilator;$/;"	m	class:Commander
+max_accel	drive_system.h	/^    float    max_accel; \/* steps\/sec\/sec *\/$/;"	m	struct:DriveSystem
+max_speed	drive_system.h	/^    float    max_speed; \/* steps\/sec *\/$/;"	m	struct:DriveSystem
+move_t	types.h	/^typedef int32_t move_t;$/;"	t
+process_command	commander.cpp	/^bool Commander::process_command()$/;"	f	class:Commander
+remaining	ventilator.cpp	/^move_t Ventilator::remaining()$/;"	f	class:Ventilator
+rep_pos	ventilator.cpp	/^void rep_pos(long remaining, long max)$/;"	f
+set_accel	ventilator.cpp	/^void Ventilator::set_accel(float accel)$/;"	f	class:Ventilator
+set_bpm	ventilator.cpp	/^void Ventilator::set_bpm(int bpm)$/;"	f	class:Ventilator
+set_length	ventilator.cpp	/^void Ventilator::set_length(move_t length)$/;"	f	class:Ventilator
+set_max_speed	ventilator.cpp	/^void Ventilator::set_max_speed(float max_speed)$/;"	f	class:Ventilator
+set_percent	ventilator.cpp	/^void Ventilator::set_percent(int percent)$/;"	f	class:Ventilator
+set_vstate	ventilator.cpp	/^void Ventilator::set_vstate(VentilatorState state)$/;"	f	class:Ventilator
+speed	ventilator.cpp	/^speed_t Ventilator::speed()$/;"	f	class:Ventilator
+speed_t	types.h	/^typedef float speed_t;$/;"	t
+state	ventilator.h	/^    inline VentilatorState state() const { return m_state; }$/;"	f	class:Ventilator
+step_state	commander.cpp	/^void Commander::step_state()$/;"	f	class:Commander
+stepper_buffer	ventilator.cpp	/^static char stepper_buffer[sizeof(AccelStepper)];$/;"	v	file:
+steps_per_mm	drive_system.h	/^    unsigned steps_per_mm; \/* gearing, microstepping, etc *\/$/;"	m	struct:DriveSystem
+update_params	ventilator.cpp	/^void Ventilator::update_params(int bpm, int percent)$/;"	f	class:Ventilator
+vent_home_cb	ventilator.cpp	/^void vent_home_cb(const int pin, const int state, void *param)$/;"	f
+vstate_strings	vstate.cpp	/^const char *vstate_strings[] = {"Disable", "Disabled",$/;"	v
