@@ -33,33 +33,18 @@ void setup()
     Serial.begin(115200);
     while (!Serial)
         ;
+
     pinMode(STEPPER_STEP, OUTPUT);
     pinMode(STEPPER_DIR, OUTPUT);
     pinMode(STEPPER_ENABLE, OUTPUT);
 
-    // while (true)
-        // Serial.println("Test");
-    // while (true)
-    // {
-        // digitalWrite(STEPPER_ENABLE, HIGH);
-        // delayMicroseconds(2);
-        // digitalWrite(STEPPER_ENABLE, LOW);
-        // delayMicroseconds(2);
-    // };
-
     ventilator = new (v_buffer) Ventilator();
     attachInterrupt(digitalPinToInterrupt(HOME_PIN), home_pin_changed, LOW);
     commander = new (c_buffer) Commander(ventilator);
-
-    // Change these to suit your stepper if you want
-    // stepper.setMaxSpeed(9000);
-    // stepper.setAcceleration(2000);
-    // stepper.moveTo(7200);
 }
 
 void loop()
 {
-    // Serial.println("loop()");
     commander->loop();
     ventilator->loop();
 }
