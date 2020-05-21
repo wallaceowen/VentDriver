@@ -8,23 +8,14 @@
 #include "ports.h"
 #include "vnew.h"
 
-
-// #define DEBUG_SETTERS
-// #define DEBUG_VENTILATOR_TIMING
-#define DEBUG_VENTILATOR_CHANGES
-
-#define INTERVAL_MSEC 25
-
+// Touched by ISR, so declared volatile
 static volatile int home_reached = 0;
 
-// Used by placement new, storage for the AccelStepper object constructed
+// Used by placement new, this si the storage for the AccelStepper object constructed
 // in the Ventilator's ctor
 static char stepper_buffer[sizeof(AccelStepper)];
 
-// So the ISR can get to the ventilator object
-static Ventilator *local_ventilator = 0;
-
-// Deal with home button being pressed
+// Deal with home sensor trigger
 void Ventilator::home_triggered()
 {
     // If we're homing stop the motor
@@ -41,6 +32,7 @@ void Ventilator::home_triggered()
     }
 }
 
+// Enable the ventilator driver
 void Ventilator::enable()
 {
     m_enabled = true;
@@ -49,6 +41,7 @@ void Ventilator::enable()
     digitalWrite(m_enable_pin, STEPPER_ASSERT_STATE);
 }
 
+// Disable the ventilator driver
 void Ventilator::disable()
 {
     m_enabled = false;
@@ -57,6 +50,7 @@ void Ventilator::disable()
     digitalWrite(m_enable_pin, STEPPER_DEASSERT_STATE);
 }
 
+// Home the ventilator driver
 void Ventilator::home()
 {
     m_params_changed = true;
@@ -64,6 +58,7 @@ void Ventilator::home()
     digitalWrite(m_enable_pin, STEPPER_ASSERT_STATE);
 }
 
+// Update our movement vars based on updated parameters
 void Ventilator::if_params_changed_update_vars()
 {
     if (m_params_changed)
@@ -80,9 +75,6 @@ void Ventilator::if_params_changed_update_vars()
 
 void Ventilator::adjust_speed(float speed)
 {
-    // Serial.print("adjust_speed(");
-    // Serial.print(speed);
-    // Serial.println(")");
     if (speed < m_drive_system.max_speed)
         m_stepper->setMaxSpeed(speed);
 }
@@ -91,7 +83,6 @@ void Ventilator::loop_var_speed()
 {
     if_params_changed_update_vars();
 
-    // Serial.println(vstate_strings[m_state]);
     switch(m_state)
     {
         case VS_Disable:
@@ -143,7 +134,6 @@ void Ventilator::loop_var_speed()
             home_reached = 0;
             set_vstate(VS_Homing);
             adjust_speed(m_homing_speed);
-            // Serial.println("moving to 0");
             move_t past_home = -(m_steps_per_mm*m_length_mm);
             m_stepper->moveTo(past_home);
             set_vstate(VS_Homing);
@@ -155,12 +145,6 @@ void Ventilator::loop_var_speed()
             // This gets set in the home sensor callback
             if (home_reached == 1)
                 set_vstate(VS_Homed);
-
-            // This gets set by the return value from accelstepper.run()
-            // FIXME should we use this? I think we should keep heading
-            // backward until we bump into the home sensor.
-            // if (!m_stepper_moving)
-                // set_vstate(VS_Homed);
             break;
         }
 
@@ -232,12 +216,6 @@ void Ventilator::set_homing_speed(speed_t homing_speed)
     m_homing_speed = homing_speed;
 }
 
-void home_pin_changed()
-{
-    if (local_ventilator)
-        local_ventilator->home_triggered();
-}
-
 Ventilator::Ventilator() :
     // Initial default values for drive system
     m_drive_system({DEFAULT_STEPS_PER_MM, DEFAULT_STEPPER_MAX_ACCEL, DEFAULT_STEPPER_MAX_SPEED }),
@@ -257,10 +235,8 @@ Ventilator::Ventilator() :
     m_homing_speed(HOME_STEPPER_SPEED),
     m_stepper_moving(false)
 {
-    local_ventilator = this;
     digitalWrite(m_enable_pin, STEPPER_DEASSERT_STATE);
     pinMode(HOME_PIN, INPUT);
-    attachInterrupt(digitalPinToInterrupt(HOME_PIN), home_pin_changed, LOW);
 
     // Give the stepper driver a nice fat 5uS pulse
     m_stepper->setMinPulseWidth(5U);
@@ -268,8 +244,7 @@ Ventilator::Ventilator() :
     // Start off with max, accel.  Use set_accel to set a lower acceleration
     m_stepper->setAcceleration(m_drive_system.max_accel);
 
-    // We are at 0. TODO: Home us here?  Or is that dangerous and we just need to
-    // use the home command when we're ready?
+    // Start off with accelstepper happy about where we currently are
     m_stepper->setCurrentPosition(0L);
 }
 

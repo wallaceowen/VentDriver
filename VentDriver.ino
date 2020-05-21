@@ -22,6 +22,12 @@ char v_buffer[sizeof(Ventilator)];
 Commander*commander;
 char c_buffer[sizeof(Commander)];
 
+// When home pin goes low inform the ventilator
+void home_pin_changed()
+{
+        ventilator->home_triggered();
+}
+
 void setup()
 {  
     Serial.begin(115200);
@@ -42,6 +48,7 @@ void setup()
     // };
 
     ventilator = new (v_buffer) Ventilator();
+    attachInterrupt(digitalPinToInterrupt(HOME_PIN), home_pin_changed, LOW);
     commander = new (c_buffer) Commander(ventilator);
 
     // Change these to suit your stepper if you want
