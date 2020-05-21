@@ -1,6 +1,6 @@
 # VentDriver
 ## Ventilator piston stepper driver subsystem
-This code provides the low-level driving of a piston or bellows ventilator using a stepper motor, implementing timing for inhale and exhale.  It is designed to be programmed into a microprocessor that is connected to a ventilator control system over a moderately high speed serial interface to provide a dedicated facility for controlling the reciprocating movement of the ventilator mechanics.
+This code provides the low-level driving of a stepper motor-based piston or bellows ventilator mechanism, implementing timing for inhale and exhale, speed and acceleration for desired BPM and volume.  It is designed to be programmed into a microprocessor that is connected to a ventilator control system over a moderately high speed serial interface, providing a dedicated low cost micro for controlling the reciprocating movement of the ventilator mechanics.
 
 ## Commands:
 -    B -> set Breaths Per Minute. Parameter: integer 5-36
