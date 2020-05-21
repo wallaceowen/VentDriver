@@ -36,7 +36,7 @@ This driver is responsible for moving the diaphragm/bellows/piston/bag using a s
 This puts the resposnsibility for obtaining the desired volume of air as a percentage of that full stroke on the controlling system, which is also monitoring differential pressure transducers to detect demand, and anything else outside the scope of moving that piston/diaphragm back and forth with a glass-smooth acceleration profile.
 
 ### Home sensor
-The code monotors a pin for a negative transition, indicating that the home sensor has triggered.  This is not debounced in the code, so I suggest an opto sensor or some signal conditioning.
+The code monitors a pin for a negative transition, indicating that the home sensor has triggered.  This is not debounced in the code, so I suggest an opto sensor or some signal conditioning.
 
 ### Current target
 This code targets the STM32F401C 'Black Pill' and the STM32F103C8T6 'Blue Pill'.  It will also run on an ATmega328p as found on Arduino Nano and several others, but at a significant performance penalty.
