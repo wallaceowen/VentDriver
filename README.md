@@ -21,6 +21,13 @@ The home sensor is monitored by an edge-sensitive interrupt, which just sets a v
 state machine.
 
 ## Notes
+
+### Principal use case
+You are designing/prototyping a moving mechansim style ventilator.  You have some interesing control ideas, some thoughts on measuring flow, and just want to have some drop in piece of subsystem that could assume responsibilities for moving your diaphragm/piston/bellows/ambu-bag in and out in the classic breathe-for-me pattern of 1/3 inhale and 2/3 exhale for a specified breaths per minute.
+
+### Requirements
+You need a spare serial interface over which you can send short ASCII text messages at 115.2K, or an SPI interface and a chip select to talk to me on the input end, and a stepper driver with step, direction and enable, so I can tell the stepper motor what to do.
+
 ### Driving steppers
 stm32 output pins swing from 0 to 3.3v, and the typical TB6600-based stepper driver for driving the larger NEMA23 steppers uses opto couplers with 560 ohm resistors, you will need to level shift the step, direction and enable pins with a transistor, either NPN or N-channel FET that pulls the cathode of the opto coupler's LED to ground, and tie the anode input pin, which passes through that 560 ohm stepper, to the 5V rail so you generate sufficient current to turn on the LED in the opto coupler.  Or, alternatively, replace the 560 ohm resistor on the stepper driver board with something closer to 300 ohms and tie it to the 3v3 rail.
 
