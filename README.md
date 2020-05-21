@@ -31,3 +31,8 @@ This puts the resposnsibility for obtaining the desired volume of air as a perce
 ### Home sensor
 The code monotors a pin for a negative transition, indicating that the home sensor has triggered.  This is not debounced in the code, so I suggest an opto sensor or some signal conditioning.
 
+### Current target
+This code targets the STM32F401C 'Black Pill' and the STM32F103C8T6 'Blue Pill'.  It will also run on an ATmega328p as found on Arduino Nano and several others, but at a significant performance penalty.
+
+### Build environment
+Builds as-is in Arduino, has one Arduino library dependency: AccelStepper, the optimized stepper motor movement library.
