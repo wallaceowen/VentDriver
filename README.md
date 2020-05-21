@@ -15,9 +15,7 @@ Provides the low-level driving of a piston or bellows ventilator using a stepper
 -    R -> Send a text in json form reporting the current state and parameters
 -    h -> set homing speed in steps/sec
 
-All commands consist of a single char possibly followed by a parameter with no intervening whitespace, terminated by "\r" by default.
-
-(TERM is an enumeration constant in the class implementing the command interpreter, which is a simple switch statement on first char followed by the appropriate sscanf() call).
+All commands consist of a single char possibly followed by a parameter with no intervening whitespace, terminated by "\r" by default. (TERM is an enumeration constant in the class implementing the command interpreter, which is a simple switch statement on first char followed by the appropriate sscanf() call).
 
 The home sensor is monitored by an edge-sensitive interrupt, which just sets a volatile that is checked in the ventilator 
 state machine.
