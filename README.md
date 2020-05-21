@@ -21,4 +21,13 @@ The home sensor is monitored by an edge-sensitive interrupt, which just sets a v
 state machine.
 
 ## Notes
+### DRiving steppers
 stm32 output pins swing from 0 to 3.3v, and the typical TB6600-based stepper driver for driving the larger NEMA23 steppers uses opto couplers with 560 ohm resistors, you will need to level shift the step, direction and enable pins with a transistor, either NPN or N-channel FET that pulls the cathode of the opto coupler's LED to ground, and tie the anode input pin, which passes through that 560 ohm stepper, to the 5V rail so you generate sufficient current to turn on the LED in the opto coupler.  Or, alternatively, replace the 560 ohm resistor on the stepper driver board with something closer to 300 ohms and tie it to the 3v3 rail.
+
+### Percentage of volume
+This driver is responsible for moving the diaphragm/bellows/piston/bag using a stepper motor in the established timing of one third of a cycle for inhale and two thirds of the cycle for exhale.  It is not aware of the volume moved by the mechanism, only the length of the stroke possible.
+This puts the resposnsibility for obtaining the desired volume of air as a percentage of that full stroke on the controlling system, which is also monitoring differential pressure transducers to detect demand, and anything else outside the scope of moving that piston/diaphragm back and forth with a glass-smooth acceleration profile.
+
+### Home sensor
+The code monotors a pin for a negative transition, indicating that the home sensor has triggered.  This is not debounced in the code, so I suggest an opto sensor or some signal conditioning.
+
