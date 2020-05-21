@@ -10,7 +10,6 @@
 
 #include "constants.h"
 #include "ports.h"
-#include "vnew.h"
 #include "ventilator.h"
 #include "commander.h"
 

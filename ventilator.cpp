@@ -6,7 +6,6 @@
 #include "ventilator.h"
 #include "constants.h"
 #include "ports.h"
-#include "vnew.h"
 
 // Touched by ISR, so declared volatile
 static volatile int home_reached = 0;
