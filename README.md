@@ -1,6 +1,6 @@
 # VentDriver
-Ventilator piston stepper driver subsystem
-Provides the low-level driving of a piston or bellows ventilator using a stepper motor, implementing timing for inhale and exhale
+## Ventilator piston stepper driver subsystem
+This code provides the low-level driving of a stepper motor-based piston or bellows ventilator mechanism, implementing timing for inhale and exhale, speed and acceleration for desired BPM and volume.  It is designed to be programmed into a microprocessor that is connected to a ventilator control system over a moderately high speed serial interface, providing a dedicated low cost micro for controlling the reciprocating movement of the ventilator mechanics.
 
 ## Commands:
 -    B -> set Breaths Per Minute. Parameter: integer 5-36
@@ -26,10 +26,10 @@ state machine.
 You are designing/prototyping a moving mechansim style ventilator.  You have some interesing control ideas, some thoughts on measuring flow, and just want to have some drop in piece of subsystem that could assume responsibilities for moving your diaphragm/piston/bellows/ambu-bag in and out in the classic breathe-for-me pattern of 1/3 inhale and 2/3 exhale for a specified breaths per minute.
 
 ### Requirements
-You need a spare serial interface over which you can send short ASCII text messages at 115.2K, or an SPI interface and a chip select to talk to me on the input end, and a stepper driver with step, direction and enable, so I can tell the stepper motor what to do.
+You will need a spare serial interface over which you can send short ASCII text messages at 115.2K, or an SPI interface and a chip select to talk to me on the input end, and a stepper driver with step, direction and enable, so I can tell the stepper motor what to do.
 
 ### Driving steppers
-stm32 output pins swing from 0 to 3.3v, and the typical TB6600-based stepper driver for driving the larger NEMA23 steppers uses opto couplers with 560 ohm resistors, you will need to level shift the step, direction and enable pins with a transistor, either NPN or N-channel FET that pulls the cathode of the opto coupler's LED to ground, and tie the anode input pin, which passes through that 560 ohm stepper, to the 5V rail so you generate sufficient current to turn on the LED in the opto coupler.  Or, alternatively, replace the 560 ohm resistor on the stepper driver board with something closer to 300 ohms and tie it to the 3v3 rail.
+stm32 output pins swing from 0 to 3.3v, and the typical TB6600-based stepper driver for driving the larger NEMA23 steppers uses opto couplers with 560 ohm resistors, you will need to level shift the step, direction and enable pins with a transistor, either NPN or N-channel FET that pulls the cathode of the opto coupler's LED to ground, and tie the anode input pin, which passes through that 560 ohm stepper, to the 5V rail so you generate sufficient current to turn on the LED in the opto coupler.  Or, alternatively, replace the 560 ohm resistor on the stepper driver board with something closer to 300 ohms and tie it to the 3v3 rail and drive the opto couplers directly (the LEDs in the opto couplers need about 15mA to get decent current transfer).
 
 ### Percentage of volume
 This driver is responsible for moving the diaphragm/bellows/piston/bag using a stepper motor in the established timing of one third of a cycle for inhale and two thirds of the cycle for exhale.  It is not aware of the volume moved by the mechanism, only the length of the stroke possible.
