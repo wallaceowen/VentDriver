@@ -11,6 +11,7 @@
 #include "ventilator.h"
 #include "commander.h"
 
+
 // The ventilator
 Ventilator *ventilator;
 char v_buffer[sizeof(Ventilator)];
